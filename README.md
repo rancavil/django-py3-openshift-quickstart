@@ -1,7 +1,7 @@
 Django 1.6 and Python 3 on OpenShift
 ====================================
 
-This git repository helps you get up and running quickly w/ a Django 1.6
+This git repository helps you get up and running quickly w/ a Django 1.6 and
 Python 3.3 installation on OpenShift.  The Django project name used in this
 repo is 'openshift' but you can feel free to change it.  Right now the
 backend is sqlite3 and the database runtime is found in
