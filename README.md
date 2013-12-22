@@ -36,7 +36,7 @@ Install the RHC client tools if you have not already done so:
 
 Create a python-3.3 application
 
-    rhc app create -a django3 -t python-3.3
+    rhc app create -a djangopy3 -t python-3.3
 
 Or create the application python-3.3 with the admin web console.
 
@@ -48,7 +48,7 @@ Create the Python application with the name django3.
 
 Add this upstream repo
 
-    cd django3
+    cd djangopy3
     git remote add upstream -m master git://github.com/rancavil/django-py3-openshift-quickstart.git
     git pull -s recursive -X theirs upstream master
 
@@ -61,7 +61,7 @@ special attention.
 	
 That's it. You can now checkout your application at:
 
-    http://django3-$yournamespace.rhcloud.com
+    http://djangopy3-$yournamespace.rhcloud.com
 
 Admin user name and password
 ----------------------------
