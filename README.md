@@ -5,7 +5,7 @@ This git repository helps you get up and running quickly w/ a Django 1.6 and
 Python 3.3 installation on OpenShift.  The Django project name used in this
 repo is 'openshift' but you can feel free to change it.  Right now the
 backend is sqlite3 and the database runtime is found in
-`$OPENSHIFT_DATA_DIR/sqlite3.db`.
+`$OPENSHIFT_DATA_DIR/db.sqlite3`.
 
 Before you push this app for the first time, you will need to change
 the [Django admin password](#admin-user-name-and-password).
