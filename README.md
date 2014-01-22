@@ -44,7 +44,7 @@ Or create the application python-3.3 with the admin web console.
 
 Connect into your OpenShift account and Add Application and select Python 3.3.
 
-Create the Python application with the name django3.
+Create the Python application with the name djangopy3.
 
 Add this upstream repo
 
