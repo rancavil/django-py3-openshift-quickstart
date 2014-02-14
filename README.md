@@ -32,15 +32,15 @@ Create an account at http://openshift.redhat.com/
 
 Install the RHC client tools if you have not already done so:
     
-    sudo gem install rhc
+     sudo gem install rhc
 
 Create a python-3.3 application
 
-    rhc app create djangopy3 python-3.3
+     rhc app create djangopy3 python-3.3
 
 Or create the application python-3.3 with the admin web console.
 
-    https://www.openshift.com/
+     https://www.openshift.com/
 
 Connect into your OpenShift account and Add Application and select Python 3.3.
 
@@ -48,7 +48,7 @@ Create the Python application with the name djangopy3.
 
 Add this upstream repo
 
-    cd djangopy3
+     cd djangopy3
      git remote add upstream -m master git://github.com/rancavil/django-py3-openshift-quickstart.git
      git pull -s recursive -X theirs upstream master
 
@@ -57,14 +57,14 @@ If you want to use the Redis-Cloud with Django see [the wiki](https://github.com
 
 Then push the repo upstream
 
-    git push
+     git push
 
 Here, the [admin user name and password will be displayed](#admin-user-name-and-password), so pay
 special attention.
 	
 That's it. You can now checkout your application at:
 
-    http://djangopy3-$yournamespace.rhcloud.com
+      http://djangopy3-$yournamespace.rhcloud.com
 
 Admin user name and password
 ----------------------------
@@ -78,19 +78,19 @@ the password later.
 
 When you make:
 
-     git push
+      git push
 
 In the console output, you must find something like this:
 
-     remote: Django application credentials:
-     remote: 	user: admin
-     remote: 	SY1ScjQGb2qb
+      remote: Django application credentials:
+      remote: 	user: admin
+      remote: 	SY1ScjQGb2qb
 
 Or you can go to SSH console, and check the CREDENTIALS file located 
 in $OPENSHIFT_DATA_DIR.
 
-     cd $OPENSHIFT_DATA_DIR
-     vi CREDENTIALS
+      cd $OPENSHIFT_DATA_DIR
+      vi CREDENTIALS
 
 You should see the output:
 
@@ -103,9 +103,9 @@ After, you can change the password in the Django admin console.
 Django project directory structure
 ----------------------------------
 
-     django3/
-        .gitignore
-     	.openshift/
+      django3/
+         .gitignore
+     	 .openshift/
      		README.md
      		action_hooks/  (Scripts for deploy the application)
      			build
@@ -149,22 +149,30 @@ You can install it in the setup.py
 
 On OpenShift, Django is served through wsgi, like cherrypy, this package can be installed with setup.py
 
-     from setuptools import setup
+      from setuptools import setup
+      
+      import os
 
-     setup(name='YourAppName', version='1.0',
-           description='OpenShift Python-3.3 / Django-1.6 Community Cartridge based application',
-           author='Your Name', author_email='admin@example.org',
-           url='https://pypi.python.org/pypi',
+      # Put here required packages or
+      # Uncomment one or more lines below in the install_requires section
+      # for the specific client drivers/modules your application needs.
+      packages = ['Django<=1.6',
+                  'CherryPy', # If you want serve Django through CherryPy
+                  'static3',  # If you want serve the static files in the same server
+                   #  'mysql-connector-python',
+                   #  'pymongo',
+                   #  'psycopg2',
+      ]
 
-           #  Uncomment one or more lines below in the install_requires section
-           #  for the specific client drivers/modules your application needs.
-           install_requires=['Django<=1.6',
-                             'CherryPy', # If you want serve Django through CherryPy
-                             'static3',  # If you want serve the static files in the same server
-                             #  'mysql-connector-python',
-                             #  'pymongo',
-                             #  'psycopg2',
-           ],
-     )
+      if 'REDISCLOUD_URL' in os.environ and 'REDISCLOUD_PORT' in os.environ and 'REDISCLOUD_PASSWORD' in os.environ:
+           packages.append('django-redis-cache')
+           packages.append('hiredis')
+
+      setup(name='YourAppName', version='1.0',
+            description='OpenShift Python-3.3 / Django-1.6 Community Cartridge based application',
+            author='Your Name', author_email='admin@example.org',
+            url='https://pypi.python.org/pypi',
+            install_requires=packages,
+      )
 
 if you don't install cherrypy, OpenShift uses wsgiref.
