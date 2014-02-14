@@ -148,7 +148,7 @@ You can install it in the setup.py
 
 On OpenShift, Django is served through wsgi, like cherrypy, this package can be installed with setup.py
 
-      from setuptools import setup
+     from setuptools import setup
       
       import os
 
