@@ -36,7 +36,7 @@ Install the RHC client tools if you have not already done so:
 
 Create a python-3.3 application
 
-    rhc app create -a djangopy3 -t python-3.3
+    rhc app create djangopy3 python-3.3
 
 Or create the application python-3.3 with the admin web console.
 
