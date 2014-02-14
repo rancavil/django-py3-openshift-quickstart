@@ -48,7 +48,7 @@ Create the Python application with the name djangopy3.
 
 Add this upstream repo
 
-     cd djangopy3
+    cd djangopy3
      git remote add upstream -m master git://github.com/rancavil/django-py3-openshift-quickstart.git
      git pull -s recursive -X theirs upstream master
 
@@ -82,14 +82,14 @@ When you make:
 
 In the console output, you must find something like this:
 
-      remote: Django application credentials:
+     remote: Django application credentials:
       remote: 	user: admin
       remote: 	SY1ScjQGb2qb
 
 Or you can go to SSH console, and check the CREDENTIALS file located 
 in $OPENSHIFT_DATA_DIR.
 
-      cd $OPENSHIFT_DATA_DIR
+     cd $OPENSHIFT_DATA_DIR
       vi CREDENTIALS
 
 You should see the output:
@@ -103,39 +103,39 @@ After, you can change the password in the Django admin console.
 Django project directory structure
 ----------------------------------
 
-      django3/
+     django3/
          .gitignore
-     	 .openshift/
-     		README.md
+         .openshift/
+                README.md
      		action_hooks/  (Scripts for deploy the application)
-     			build
-     			post_deploy
-     			pre_build
-     			deploy
-     			secure_db.py
-     		cron/
-     		markers/
-     	setup.py   (Setup file with de dependencies and required libs)
-     	app.py (This file execute Django over on WSGI)
-     	README.md
-     	libs/   (Adicional libraries)
-     	data/	(For not-externally exposed wsgi code)
-     	wsgi/	(Externally exposed wsgi goes)
-     		application (Script to execute the application on wsgi)
-     		openshift/	(Django project directory)
-     			__init__.py
-     			manage.py
-     			openshiftlibs.py
-                openshiftstaticfiles.py (lib to use static files on the same server)
-     			settings.py
-     			urls.py
-     			views.py
-     			wsgi.py
-     			templates/
-     				home/
-     					home.html (Default home page, change it)
-     		static/	(Public static content gets served here)
-     			README
+     		     build
+     		     post_deploy
+     		     pre_build
+     		     deploy
+     		     secure_db.py
+               cron/
+               markers/
+          setup.py   (Setup file with de dependencies and required libs)
+          app.py (This file execute Django over on WSGI)
+          README.md
+          libs/   (Adicional libraries)
+     	  data/	(For not-externally exposed wsgi code)
+          wsgi/	(Externally exposed wsgi goes)
+               application (Script to execute the application on wsgi)
+               openshift/  (Django project directory)
+                    __init__.py
+                    manage.py
+                    openshiftlibs.py
+                    openshiftstaticfiles.py (lib to use static files on the same server)
+                    settings.py
+                    urls.py
+                    views.py
+                    wsgi.py
+                    templates/
+                         home/
+                            home.html (Default home page, change it)
+                    static/ (Public static content gets served here)
+                          README
 
 From HERE you can start with your own application.
 
