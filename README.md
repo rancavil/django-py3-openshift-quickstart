@@ -49,9 +49,8 @@ Create the Python application with the name djangopy3.
 Add this upstream repo
 
     cd djangopy3
-    git remote add upstream -m master git://github.com/rancavil/django-py3-openshift-quickstart.git
-    git pull -s recursive -X theirs upstream master
-
+     git remote add upstream -m master git://github.com/rancavil/django-py3-openshift-quickstart.git
+     git pull -s recursive -X theirs upstream master
 
 ####Note:
 If you want to use the Redis-Cloud with Django see [the wiki](https://github.com/rancavil/django-py3-openshift-quickstart/wiki/Django-1.6-with-Redis-Cloud) 
