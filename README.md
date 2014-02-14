@@ -134,8 +134,7 @@ Django project directory structure
                     templates/
                          home/
                             home.html (Default home page, change it)
-                    static/ (Public static content gets served here)
-                          README
+               static/ (Public static content gets served here)
 
 From HERE you can start with your own application.
 
