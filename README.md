@@ -48,7 +48,7 @@ Create the Python application with the name djangopy3.
 
 Add this upstream repo
 
-    cd djangopy3
+     cd djangopy3
      git remote add upstream -m master git://github.com/rancavil/django-py3-openshift-quickstart.git
      git pull -s recursive -X theirs upstream master
 
@@ -64,7 +64,7 @@ special attention.
 	
 That's it. You can now checkout your application at:
 
-      http://djangopy3-$yournamespace.rhcloud.com
+     http://djangopy3-$yournamespace.rhcloud.com
 
 Admin user name and password
 ----------------------------
@@ -83,14 +83,14 @@ When you make:
 In the console output, you must find something like this:
 
      remote: Django application credentials:
-      remote: 	user: admin
-      remote: 	SY1ScjQGb2qb
+     remote: 	user: admin
+     remote: 	SY1ScjQGb2qb
 
 Or you can go to SSH console, and check the CREDENTIALS file located 
 in $OPENSHIFT_DATA_DIR.
 
      cd $OPENSHIFT_DATA_DIR
-      vi CREDENTIALS
+     vi CREDENTIALS
 
 You should see the output:
 
@@ -104,22 +104,23 @@ Django project directory structure
 ----------------------------------
 
      django3/
-         .gitignore
-         .openshift/
-                README.md
-     		action_hooks/  (Scripts for deploy the application)
-     		     build
-     		     post_deploy
-     		     pre_build
-     		     deploy
-     		     secure_db.py
+          .gitignore
+          .openshift/
+               README.md
+               action_hooks/  (Scripts for deploy the application)
+                    build
+                    post_deploy
+                    pre_build
+                    deploy
+                    secure_db.py
                cron/
                markers/
           setup.py   (Setup file with de dependencies and required libs)
-          app.py (This file execute Django over on WSGI)
+          wsgi.py (This file execute Django over on WSGI)
           README.md
+          requirements.txt (for additionals packages dependencies)
           libs/   (Adicional libraries)
-     	  data/	(For not-externally exposed wsgi code)
+     	    data/	(For not-externally exposed wsgi code)
           wsgi/	(Externally exposed wsgi goes)
                application (Script to execute the application on wsgi)
                openshift/  (Django project directory)
@@ -130,7 +131,6 @@ Django project directory structure
                     settings.py
                     urls.py
                     views.py
-                    wsgi.py
                     templates/
                          home/
                             home.html (Default home page, change it)
@@ -149,29 +149,27 @@ You can install it in the setup.py
 On OpenShift, Django is served through wsgi, like cherrypy, this package can be installed with setup.py
 
      from setuptools import setup
-      
-      import os
 
-      # Put here required packages or
-      # Uncomment one or more lines below in the install_requires section
-      # for the specific client drivers/modules your application needs.
-      packages = ['Django<=1.6',
-                  'CherryPy', # If you want serve Django through CherryPy
-                  'static3',  # If you want serve the static files in the same server
-                   #  'mysql-connector-python',
-                   #  'pymongo',
-                   #  'psycopg2',
-      ]
+     import os
 
-      if 'REDISCLOUD_URL' in os.environ and 'REDISCLOUD_PORT' in os.environ and 'REDISCLOUD_PASSWORD' in os.environ:
+     # Put here required packages or
+     # Uncomment one or more lines below in the install_requires section
+     # for the specific client drivers/modules your application needs.
+     packages = ['Django<=1.6',
+                 'static3',  # If you want serve the static files in the same server
+                  #  'mysql-connector-python',
+                  #  'pymongo',
+                  #  'psycopg2',
+     ]
+
+     if 'REDISCLOUD_URL' in os.environ and 'REDISCLOUD_PORT' in os.environ and 'REDISCLOUD_PASSWORD' in os.environ:
            packages.append('django-redis-cache')
            packages.append('hiredis')
 
-      setup(name='YourAppName', version='1.0',
-            description='OpenShift Python-3.3 / Django-1.6 Community Cartridge based application',
-            author='Your Name', author_email='admin@example.org',
-            url='https://pypi.python.org/pypi',
-            install_requires=packages,
-      )
+     setup(name='YourAppName', version='1.0',
+           description='OpenShift Python-3.3 / Django-1.6 Community Cartridge based application',
+           author='Your Name', author_email='admin@example.org',
+           url='https://pypi.python.org/pypi',
+           install_requires=packages,
+     )
 
-if you don't install cherrypy, OpenShift uses wsgiref.
