@@ -119,8 +119,8 @@ Django project directory structure
           wsgi.py (This file execute Django over on WSGI)
           README.md
           requirements.txt (for additionals packages dependencies)
-          libs/   (Adicional libraries)
-     	    data/	(For not-externally exposed wsgi code)
+          libs/ (Adicional libraries)
+     	  data/	(For not-externally exposed wsgi code)
           wsgi/	(Externally exposed wsgi goes)
                application (Script to execute the application on wsgi)
                openshift/  (Django project directory)
