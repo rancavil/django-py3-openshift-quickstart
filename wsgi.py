@@ -5,8 +5,8 @@ import os
 # Below for testing only
 #
 if __name__ == '__main__':
-    ip   = os.environ['OPENSHIFT_PYTHON_IP']
-    port = int(os.environ['OPENSHIFT_PYTHON_PORT'])
+    ip   = 'localhost'
+    port = 8051
     zapp = imp.load_source('application', 'wsgi/application')
 
     from wsgiref.simple_server import make_server

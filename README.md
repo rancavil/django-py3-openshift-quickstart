@@ -116,7 +116,7 @@ Django project directory structure
                cron/
                markers/
           setup.py   (Setup file with de dependencies and required libs)
-          wsgi.py (This file execute Django over on WSGI)
+          wsgi.py (This file execute Django over on WSGI for testing)
           README.md
           requirements.txt (for additionals packages dependencies)
           libs/ (Adicional libraries)
