@@ -1,5 +1,10 @@
 #!/usr/bin/env python
 import os
+import imp
+import sys
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+sys.path.append(os.path.join('wsgi', 'openshift'))
 
 #
 # Below for testing only
